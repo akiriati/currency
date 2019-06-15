@@ -1,5 +1,5 @@
 document.addEventListener('mouseup', function (e) {
-    var text = window.getSelection().toString();
+    var text = window.getSelection().toString().trim();
     var amount = get_amount(text);
     var currency = get_currency(text);
     if (amount && currency) {
@@ -16,7 +16,6 @@ document.addEventListener('mouseup', function (e) {
     }
 }
 );
-
 
 function get_amount(text) {
     return text.replace('$', '').replace('€', '').replace('£', '').replace('₪', '');
@@ -53,13 +52,6 @@ document.addEventListener('keypress', function (e) {
 }
 );
 
-window.addEventListener('load', function (e) {
-    chrome.runtime.sendMessage(
-        null,
-        {
-            type: "load"
-        }
-    );
-}
-);
+
+
 
